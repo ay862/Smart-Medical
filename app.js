@@ -32,6 +32,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
+app.use("/",(req,res)=>{
+  res.send("<h1> Hello To Smart Medical Record")
+});
 
 app.use("/hospitaldoctor",hospitalDoctor);
 app.use("/hospitalnurse",hospitalNurse);
