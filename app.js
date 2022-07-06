@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const connectionString="mongodb+srv://smartmedic:smartmedic2022@smartmedic.r5ddgad.mongodb.net/smartmedical?retryWrites=true&w=majority"
 
 
@@ -10,15 +12,18 @@ const nurseSchedule = require("./routers/nurseScheduleRouters");
 const doctorSchedule = require("./routers/doctorScheduleRouters");
 const medicalRecord = require("./routers/medicalRecordRouters");
 const hospital = require("./routers/hospitalRouters");
-const upload = require("./middleware/upload");
+//const upload = require("./middleware/upload");
 const hospitalDoctor = require("./routers/hospitalDoctorRouters")
 const hospitalNurse = require("./routers/hospitalNurseRouters")
 const express = require("express");
 const app = express();
 const myMongoose=require('mongoose');
-const multer=require("multer");
 const bodyParser = require('body-parser');
 const cors =require('cors');
+const { storage } = require('./middleware/upload');
+const multer = require('multer');
+const upload = multer({ storage });
+
 
 var port = process.env.PORT || 8080;
 var fs = require('fs');
@@ -28,6 +33,14 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
+/*
+//we used upload.single to tell "multer" to upload
+// only single image 
+app.post('/upload', upload.single('image'), (req, res) => {
+  console.log(req.file);
+  res.send('Done');
+});
+*/
 
 app.use("/photo/:filename",function(req,res){
   fs.readFile(`./uploads/${req.params.filename}`,(err, data)=>{

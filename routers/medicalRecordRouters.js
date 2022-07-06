@@ -1,8 +1,9 @@
 const Patient = require("../Modules/patientModules");
 const medicalRecord = require("../Modules/medicalRecordModules");
-const upload = require("../middleware/upload");
+const { storage } = require('../middleware/upload');
+const multer = require('multer');
+const upload = multer({ storage });
 const express = require("express");
-const { single } = require("../middleware/upload");
 const medicalRecordRouter = express.Router();
 
 medicalRecordRouter.get("/", async (req,res)=>{

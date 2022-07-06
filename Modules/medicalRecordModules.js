@@ -25,12 +25,12 @@ const medicalRecordModule = myMongoose.Schema(
       },
       "doctorID":{
         type: String,
-        match: [/^([d]|[D])[0-9]{14}$/,'It must be like ( D or d + National Id)']
+        match: [/^([D])[0-9]{14}$/,'It must be like ( D + National Id)']
       },
       "patientID":{
         type: String,
         required : true,
-        match: [/^([p]|[P])[0-9]{14}$/,'It must be like ( P or p + National Id)']
+        match: [/^([P])[0-9]{14}$/,'It must be like ( P  + National Id)']
       },
       "expired":{
         type:Boolean,

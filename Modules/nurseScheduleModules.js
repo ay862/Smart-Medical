@@ -22,7 +22,7 @@ const nurseScheduleModule = myMongoose.Schema(
       "nurseID":{
         type: String,
         required : true,
-        match: [/^([n]|[N])[0-9]{14}$/,'It must be like ( N or n + National Id)']
+        match: [/^([N])[0-9]{14}$/,'It must be like ( N  + National Id)']
       }
     }
 )

@@ -4,7 +4,7 @@ const hospitalModule = myMongoose.Schema(
         "_id": {
             type : String,
             required :true ,
-            match: [/^([h]|[H]).+$/,'It must start with h or H']
+            match: [/^([H]).+$/,'It must start with H']
 
         },
           "password": {
